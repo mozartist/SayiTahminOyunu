@@ -1,0 +1,11 @@
+CREATE DATABASE SayiTahminDB;
+GO
+USE SayiTahminDB;
+GO
+CREATE TABLE OyunGecmisi (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Tarih DATETIME DEFAULT GETDATE(),
+    HedefSayi VARCHAR(4),
+    Durum VARCHAR(20),
+    KalanHak INT
+);
