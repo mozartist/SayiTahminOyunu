@@ -112,7 +112,7 @@
             // 
             // btnYenidenOyna
             // 
-            this.btnYenidenOyna.BackColor = System.Drawing.Color.IndianRed; // Kırmızımsı renk
+            this.btnYenidenOyna.BackColor = System.Drawing.Color.IndianRed;
             this.btnYenidenOyna.ForeColor = System.Drawing.Color.White;
             this.btnYenidenOyna.Location = new System.Drawing.Point(200, 300);
             this.btnYenidenOyna.Name = "btnYenidenOyna";
