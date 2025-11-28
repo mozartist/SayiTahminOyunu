@@ -35,8 +35,7 @@ namespace sayi_bilmece61
             {
                 randomSayi = rnd.Next(1000, 10000);
                 hedefSayiString = randomSayi.ToString();
-
-                // Rakamları birbirinden farklı mı kontrolü
+
                 if (hedefSayiString[0] != hedefSayiString[1] &&
                     hedefSayiString[0] != hedefSayiString[2] &&
                     hedefSayiString[0] != hedefSayiString[3] &&
@@ -52,8 +51,8 @@ namespace sayi_bilmece61
             lblKalanHak.Text = hak.ToString();
             lblDurum.Text = "Tahmininizi Girin";
             lblDurum.ForeColor = Color.Black;
-            lblSonucOzet.Text = "Sonuç: +0, -0";
-            lblSonucDetay.Text = "Yeni oyun başladı! Başarılar...";
+            lblSonucOzet.Text = "SonuÃ§: +0, -0";
+            lblSonucDetay.Text = "Yeni oyun baÃ¾ladÃ½! BaÃ¾arÃ½lar...";
             lstGecmis.Items.Clear();
             txtTahmin.Clear();
 
@@ -75,7 +74,7 @@ namespace sayi_bilmece61
 
             if (string.IsNullOrWhiteSpace(tahmin) || tahmin.Length != 4)
             {
-                lblDurum.Text = "Lütfen 4 haneli sayı girin!";
+                lblDurum.Text = "LÃ¼tfen 4 haneli sayÃ½ girin!";
                 lblDurum.ForeColor = Color.Red;
                 return;
             }
@@ -83,7 +82,7 @@ namespace sayi_bilmece61
             if (tahmin[0] == tahmin[1] || tahmin[0] == tahmin[2] || tahmin[0] == tahmin[3] ||
                 tahmin[1] == tahmin[2] || tahmin[1] == tahmin[3] || tahmin[2] == tahmin[3])
             {
-                lblDurum.Text = "Rakamlar farklı olmalı!";
+                lblDurum.Text = "Rakamlar farklÃ½ olmalÃ½!";
                 lblDurum.ForeColor = Color.Red;
                 txtTahmin.Clear();
                 return;
@@ -100,15 +99,15 @@ namespace sayi_bilmece61
                 if (girilenRakam == hedefRakam)
                 {
                     dogruYer++;
-                    detayliRapor += (i + 1) + ". Sayı: DOĞRU\n";
+                    detayliRapor += (i + 1) + ". SayÃ½: DOÃRU\n";
                 }
                 else if (hedefSayiString.Contains(girilenRakam))
                 {
-                    detayliRapor += (i + 1) + ". Sayı: Rakam doğru ama YERİ YANLIŞ\n";
+                    detayliRapor += (i + 1) + ". SayÃ½: Rakam doÃ°ru ama YERÃ YANLIÃ\n";
                 }
                 else
                 {
-                    detayliRapor += (i + 1) + ". Sayı: YANLIŞ\n";
+                    detayliRapor += (i + 1) + ". SayÃ½: YANLIÃ\n";
                 }
             }
 
@@ -117,18 +116,18 @@ namespace sayi_bilmece61
 
             lblSonucOzet.Text = "Tahmin Analizi:";
             lblSonucDetay.Text = detayliRapor;
-            lstGecmis.Items.Add(tahmin + " -> (Analiz yapıldı)");
+            lstGecmis.Items.Add(tahmin + " -> (Analiz yapÃ½ldÃ½)");
 
             if (dogruYer == 4)
             {
-                lblSonucDetay.Text = "TEBRİKLER! TÜM SAYILAR DOĞRU!";
-                MessageBox.Show("Tebrikler Kazandınız! Sayı: " + hedefSayiString);
-                VeritabaniKayit(hedefSayiString, "Kazandı", hak);
+                lblSonucDetay.Text = "TEBRÃKLER! TÃœM SAYILAR DOÃRU!";
+                MessageBox.Show("Tebrikler KazandÃ½nÃ½z! SayÃ½: " + hedefSayiString);
+                VeritabaniKayit(hedefSayiString, "KazandÃ½", hak);
                 OyunBittiModu();
             }
             else if (hak == 0)
             {
-                MessageBox.Show("Oyun Bitti. Doğru Sayı: " + hedefSayiString);
+                MessageBox.Show("Oyun Bitti. DoÃ°ru SayÃ½: " + hedefSayiString);
                 VeritabaniKayit(hedefSayiString, "Kaybetti", 0);
                 OyunBittiModu();
             }
