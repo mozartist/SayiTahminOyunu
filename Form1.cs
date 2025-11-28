@@ -1,10 +1,10 @@
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace sayi_bilmece61
 {
@@ -16,7 +16,7 @@ namespace sayi_bilmece61
         }
 
         //SQL
-        SqlConnection baglanti = new SqlConnection("Data Source=.;Initial Catalog=SayiTahminDB;Integrated Security=True");
+        SqlConnection baglanti = new SqlConnection("Data Source=.;Initial Catalog=SayiTahminDB;Integrated Security=True;TrustServerCertificate=True");
 
         int randomSayi;
         int hak;
@@ -35,7 +35,7 @@ namespace sayi_bilmece61
             {
                 randomSayi = rnd.Next(1000, 10000);
                 hedefSayiString = randomSayi.ToString();
-
+
                 if (hedefSayiString[0] != hedefSayiString[1] &&
                     hedefSayiString[0] != hedefSayiString[2] &&
                     hedefSayiString[0] != hedefSayiString[3] &&
@@ -51,8 +51,8 @@ namespace sayi_bilmece61
             lblKalanHak.Text = hak.ToString();
             lblDurum.Text = "Tahmininizi Girin";
             lblDurum.ForeColor = Color.Black;
-            lblSonucOzet.Text = "SonuÃ§: +0, -0";
-            lblSonucDetay.Text = "Yeni oyun baÃ¾ladÃ½! BaÃ¾arÃ½lar...";
+            lblSonucOzet.Text = "Sonuç: +0, -0";
+            lblSonucDetay.Text = "Yeni oyun başladı! Başarılar...";
             lstGecmis.Items.Clear();
             txtTahmin.Clear();
 
@@ -74,7 +74,7 @@ namespace sayi_bilmece61
 
             if (string.IsNullOrWhiteSpace(tahmin) || tahmin.Length != 4)
             {
-                lblDurum.Text = "LÃ¼tfen 4 haneli sayÃ½ girin!";
+                lblDurum.Text = "Lütfen 4 haneli sayı girin!";
                 lblDurum.ForeColor = Color.Red;
                 return;
             }
@@ -82,7 +82,7 @@ namespace sayi_bilmece61
             if (tahmin[0] == tahmin[1] || tahmin[0] == tahmin[2] || tahmin[0] == tahmin[3] ||
                 tahmin[1] == tahmin[2] || tahmin[1] == tahmin[3] || tahmin[2] == tahmin[3])
             {
-                lblDurum.Text = "Rakamlar farklÃ½ olmalÃ½!";
+                lblDurum.Text = "Rakamlar farklı olmalı!";
                 lblDurum.ForeColor = Color.Red;
                 txtTahmin.Clear();
                 return;
@@ -99,15 +99,15 @@ namespace sayi_bilmece61
                 if (girilenRakam == hedefRakam)
                 {
                     dogruYer++;
-                    detayliRapor += (i + 1) + ". SayÃ½: DOÃRU\n";
+                    detayliRapor += (i + 1) + ". Sayı: DOĞRU\n";
                 }
                 else if (hedefSayiString.Contains(girilenRakam))
                 {
-                    detayliRapor += (i + 1) + ". SayÃ½: Rakam doÃ°ru ama YERÃ YANLIÃ\n";
+                    detayliRapor += (i + 1) + ". Sayı: Rakam doğru ama YERİ YANLIŞ\n";
                 }
                 else
                 {
-                    detayliRapor += (i + 1) + ". SayÃ½: YANLIÃ\n";
+                    detayliRapor += (i + 1) + ". Sayı: YANLIŞ\n";
                 }
             }
 
@@ -116,18 +116,18 @@ namespace sayi_bilmece61
 
             lblSonucOzet.Text = "Tahmin Analizi:";
             lblSonucDetay.Text = detayliRapor;
-            lstGecmis.Items.Add(tahmin + " -> (Analiz yapÃ½ldÃ½)");
+            lstGecmis.Items.Add(tahmin + " -> (Analiz yapıldı)");
 
             if (dogruYer == 4)
             {
-                lblSonucDetay.Text = "TEBRÃKLER! TÃœM SAYILAR DOÃRU!";
-                MessageBox.Show("Tebrikler KazandÃ½nÃ½z! SayÃ½: " + hedefSayiString);
-                VeritabaniKayit(hedefSayiString, "KazandÃ½", hak);
+                lblSonucDetay.Text = "TEBRİKLER! TÜM SAYILAR DOĞRU!";
+                MessageBox.Show("Tebrikler Kazandınız! Sayı: " + hedefSayiString);
+                VeritabaniKayit(hedefSayiString, "Kazandı", hak);
                 OyunBittiModu();
             }
             else if (hak == 0)
             {
-                MessageBox.Show("Oyun Bitti. DoÃ°ru SayÃ½: " + hedefSayiString);
+                MessageBox.Show("Oyun Bitti. Doğru Sayı: " + hedefSayiString);
                 VeritabaniKayit(hedefSayiString, "Kaybetti", 0);
                 OyunBittiModu();
             }
@@ -166,9 +166,10 @@ namespace sayi_bilmece61
                 komut.ExecuteNonQuery();
                 baglanti.Close();
                 GecmisiListele();
-            }
+            } 
             catch (Exception ex)
             {
+                MessageBox.Show("Hata Detayı: " + ex.Message); // Bize hatayı ekrana yazsın
                 if (baglanti.State == ConnectionState.Open) baglanti.Close();
             }
         }
