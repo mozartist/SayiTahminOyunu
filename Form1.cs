@@ -99,15 +99,15 @@ namespace sayi_bilmece61
                 if (girilenRakam == hedefRakam)
                 {
                     dogruYer++;
-                    detayliRapor += (i + 1) + ". Sayý: DOÐRU\n";
+                    detayliRapor += (i + 1) + ". Sayý: DOGRU\n";
                 }
                 else if (hedefSayiString.Contains(girilenRakam))
                 {
-                    detayliRapor += (i + 1) + ". Sayý: Rakam doðru ama YERÝ YANLIÞ\n";
+                    detayliRapor += (i + 1) + ". Sayý: Rakam doðru ama YERİ YANLIS\n";
                 }
                 else
                 {
-                    detayliRapor += (i + 1) + ". Sayý: YANLIÞ\n";
+                    detayliRapor += (i + 1) + ". Sayý: YANLIS\n";
                 }
             }
 
@@ -116,11 +116,11 @@ namespace sayi_bilmece61
 
             lblSonucOzet.Text = "Tahmin Analizi:";
             lblSonucDetay.Text = detayliRapor;
-            lstGecmis.Items.Add(tahmin + " -> (Analiz yapýldý)");
+            lstGecmis.Items.Add(tahmin + " -> (Analiz yapıldı)");
 
             if (dogruYer == 4)
             {
-                lblSonucDetay.Text = "TEBRÝKLER! TÜM SAYILAR DOÐRU!";
+                lblSonucDetay.Text = "Tebrikler! Tüm sayılar doğru!";
                 MessageBox.Show("Tebrikler Kazandýnýz! Sayý: " + hedefSayiString);
                 VeritabaniKayit(hedefSayiString, "Kazandý", hak);
                 OyunBittiModu();
@@ -193,3 +193,4 @@ namespace sayi_bilmece61
     }
 
 }
+
