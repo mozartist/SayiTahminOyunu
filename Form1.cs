@@ -52,7 +52,7 @@ namespace sayi_bilmece61
             lblDurum.Text = "Tahmininizi Girin";
             lblDurum.ForeColor = Color.Black;
             lblSonucOzet.Text = "Sonuç: +0, -0";
-            lblSonucDetay.Text = "Yeni oyun baþladý! Baþarýlar...";
+            lblSonucDetay.Text = "Yeni oyun başladı! Başarılar...";
             lstGecmis.Items.Clear();
             txtTahmin.Clear();
 
@@ -74,7 +74,7 @@ namespace sayi_bilmece61
 
             if (string.IsNullOrWhiteSpace(tahmin) || tahmin.Length != 4)
             {
-                lblDurum.Text = "Lütfen 4 haneli sayý girin!";
+                lblDurum.Text = "Lütfen 4 haneli sayı girin!";
                 lblDurum.ForeColor = Color.Red;
                 return;
             }
@@ -82,7 +82,7 @@ namespace sayi_bilmece61
             if (tahmin[0] == tahmin[1] || tahmin[0] == tahmin[2] || tahmin[0] == tahmin[3] ||
                 tahmin[1] == tahmin[2] || tahmin[1] == tahmin[3] || tahmin[2] == tahmin[3])
             {
-                lblDurum.Text = "Rakamlar farklý olmalý!";
+                lblDurum.Text = "Rakamlar farklı olmalı!";
                 lblDurum.ForeColor = Color.Red;
                 txtTahmin.Clear();
                 return;
@@ -99,15 +99,15 @@ namespace sayi_bilmece61
                 if (girilenRakam == hedefRakam)
                 {
                     dogruYer++;
-                    detayliRapor += (i + 1) + ". Sayý: DOGRU\n";
+                    detayliRapor += (i + 1) + ". Sayı: DOĞRU\n";
                 }
                 else if (hedefSayiString.Contains(girilenRakam))
                 {
-                    detayliRapor += (i + 1) + ". Sayý: Rakam doðru ama YERİ YANLIS\n";
+                    detayliRapor += (i + 1) + ". Sayı: Rakam doğru ama YERİ YANLIS\n";
                 }
                 else
                 {
-                    detayliRapor += (i + 1) + ". Sayý: YANLIS\n";
+                    detayliRapor += (i + 1) + ". Sayı: YANLIS\n";
                 }
             }
 
@@ -121,13 +121,13 @@ namespace sayi_bilmece61
             if (dogruYer == 4)
             {
                 lblSonucDetay.Text = "Tebrikler! Tüm sayılar doğru!";
-                MessageBox.Show("Tebrikler Kazandýnýz! Sayý: " + hedefSayiString);
-                VeritabaniKayit(hedefSayiString, "Kazandý", hak);
+                MessageBox.Show("Tebrikler Kazandınız! Sayı: " + hedefSayiString);
+                VeritabaniKayit(hedefSayiString, "Kazandı", hak);
                 OyunBittiModu();
             }
             else if (hak == 0)
             {
-                MessageBox.Show("Oyun Bitti. Doðru Sayý: " + hedefSayiString);
+                MessageBox.Show("Oyun Bitti. Doğru Sayı: " + hedefSayiString);
                 VeritabaniKayit(hedefSayiString, "Kaybetti", 0);
                 OyunBittiModu();
             }
@@ -169,7 +169,7 @@ namespace sayi_bilmece61
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Hata Detayý: " + ex.Message);
+                MessageBox.Show("Hata Detayı: " + ex.Message);
                 if (baglanti.State == ConnectionState.Open) baglanti.Close();
             }
         }
@@ -193,4 +193,5 @@ namespace sayi_bilmece61
     }
 
 }
+
 
