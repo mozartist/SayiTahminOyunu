@@ -114,13 +114,13 @@
             // 
             this.btnYenidenOyna.BackColor = System.Drawing.Color.IndianRed; // Kırmızımsı renk
             this.btnYenidenOyna.ForeColor = System.Drawing.Color.White;
-            this.btnYenidenOyna.Location = new System.Drawing.Point(200, 300); // Başlat'ın sağına
+            this.btnYenidenOyna.Location = new System.Drawing.Point(200, 300);
             this.btnYenidenOyna.Name = "btnYenidenOyna";
             this.btnYenidenOyna.Size = new System.Drawing.Size(140, 40);
             this.btnYenidenOyna.TabIndex = 10;
             this.btnYenidenOyna.Text = "Yeniden Oyna";
             this.btnYenidenOyna.UseVisualStyleBackColor = false;
-            this.btnYenidenOyna.Click += new System.EventHandler(this.btnBaslat_Click); // Aynı işi yapacak
+            this.btnYenidenOyna.Click += new System.EventHandler(this.btnBaslat_Click);
             // 
             // lstGecmis
             // 
