@@ -102,7 +102,7 @@
             // 
             // btnBaslat
             // 
-            this.btnBaslat.Location = new System.Drawing.Point(40, 300); // Sola kaydırdım
+            this.btnBaslat.Location = new System.Drawing.Point(40, 300);
             this.btnBaslat.Name = "btnBaslat";
             this.btnBaslat.Size = new System.Drawing.Size(140, 40);
             this.btnBaslat.TabIndex = 7;
